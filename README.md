@@ -33,7 +33,7 @@ A modern, multi-step onboarding flow built with React, featuring form validation
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   [git clone <repository-url>](https://github.com/chetanrule365/Root-Credit-Assignment.git)
    cd assignment
    ```
 
