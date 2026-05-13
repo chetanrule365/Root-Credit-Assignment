@@ -109,6 +109,89 @@ assignment/
 
 The application uses shared form context to maintain state across steps, with validation ensuring data integrity.
 
+## Architecture
+
+### Overall Structure
+
+The application follows a **component-based architecture** with clear separation of concerns:
+
+- **Routes**: Each step of the onboarding flow is a separate route component, promoting modularity and easy navigation.
+- **Components**: Reusable UI components (Layout, ProgressBar, SummaryDialog) that can be shared across routes.
+- **Context**: Centralized state management for form data using React Context API.
+- **Validation**: Schema-based validation using Zod for type safety and runtime validation.
+
+### State Management
+
+- **FormContext**: Provides a shared form state across all onboarding steps using React Hook Form.
+- **Zod Schemas**: Define validation rules and TypeScript types in one place, ensuring consistency.
+- **Page-Specific Validation**: Each route validates only its relevant fields to prevent cross-page validation errors.
+
+### Routing Strategy
+
+- **React Router 7**: File-based routing with nested routes for better organization.
+- **Navigation Flow**: Linear progression through steps with back navigation support.
+- **Route Guards**: Implicit validation ensures users complete steps before proceeding.
+
+### Component Design
+
+- **Layout Component**: Wraps all routes with consistent background and structure.
+- **ProgressBar**: Visual indicator of current step in the onboarding process.
+- **SummaryDialog**: Modal component for final confirmation, separated for reusability.
+
+## Decisions
+
+### Technology Choices
+
+- **React 19**: Latest version for modern React features and performance improvements.
+- **React Router 7**: Chosen for its file-based routing and modern React integration.
+- **Tailwind CSS 4**: Utility-first CSS framework for rapid UI development and consistency.
+- **Framer Motion**: Declarative animations that integrate seamlessly with React.
+- **React Hook Form + Zod**: Powerful combination for form management and validation with excellent TypeScript support.
+
+### Design Decisions
+
+- **Multi-Step Flow**: Breaking down complex forms into digestible steps improves user experience and reduces cognitive load.
+- **Shared Form State**: Maintains user input across navigation, preventing data loss and improving UX.
+- **Real-Time Validation**: Immediate feedback on form errors without waiting for submission.
+- **Responsive Design**: Mobile-first approach ensures accessibility across all devices.
+- **Accessibility**: Proper ARIA labels, keyboard navigation, and semantic HTML.
+
+### Development Decisions
+
+- **TypeScript**: Provides type safety, better IDE support, and reduces runtime errors.
+- **Component Separation**: Extracted reusable components (EyeIcon, SummaryDialog) to avoid duplication.
+- **Context over Redux**: Simpler state management for this use case without over-engineering.
+- **Vite**: Fast development server and optimized production builds.
+
+## Enhancements
+
+### Potential Features
+
+- **Email Verification**: Add email input and verification step alongside phone.
+- **Profile Picture Upload**: Allow users to upload avatar during personal details step.
+- **Two-Factor Authentication**: Enhanced security with 2FA setup.
+- **Account Recovery**: Password reset and account recovery flows.
+- **Internationalization**: Multi-language support for global users.
+- **Theme Customization**: Dark/light mode toggle.
+
+### Technical Improvements
+
+- **Error Boundaries**: Add React error boundaries for better error handling.
+- **Testing**: Unit tests for components and integration tests for flows.
+- **Performance**: Code splitting and lazy loading for better bundle sizes.
+- **Analytics**: User flow tracking and conversion metrics.
+- **API Integration**: Backend integration for user registration and verification.
+- **Progressive Web App**: Service workers for offline functionality.
+- **Accessibility Audit**: Comprehensive WCAG compliance testing.
+
+### UI/UX Enhancements
+
+- **Loading States**: Skeleton screens and loading indicators during async operations.
+- **Error Handling**: User-friendly error messages and retry mechanisms.
+- **Animation Refinements**: More sophisticated micro-interactions and transitions.
+- **Form Auto-Save**: Persist form data locally to prevent accidental data loss.
+- **Step Navigation**: Allow users to jump between completed steps.
+
 ## Contributing
 
 1. Fork the repository
